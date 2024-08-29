@@ -41,7 +41,8 @@ global:
     #                       progressiveStreaming=2;useJDBC4ColumnNameAndLabelSemantics=2;
     #   SQL Server          jdbc:sqlserver://localhost:1433;databaseName=dbName;selectMethod=cursor;sendStringParametersAsUnicode=false
     #   PostgreSQL          jdbc:postgresql://localhost:5432/dbName
-    url: "jdbc:postgresql://34.118.231.157:5432/postgres"
+    #url: "jdbc:postgresql://34.118.231.157:5432/postgres"
+    url: "jdbc:postgresql://34.105.170.251:5432/postgres"
     #   driverClass 	-- jdbc class.  Valid values are:
     #
     #   Oracle              oracle.jdbc.OracleDriver
