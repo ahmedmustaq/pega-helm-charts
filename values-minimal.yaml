@@ -440,7 +440,7 @@ pegasearch:
   enabled: false
   image: "pegasystems/search"
   memLimit: "3Gi"
-  replicas: 1
+  replicas: 0
 
   # Set externalSearchService to true to use the Search and Reporting Service.
   # Refer to the README document to configure SRS as a search functionality provider under this section.
