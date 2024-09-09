@@ -245,24 +245,34 @@ global:
           memory: "1Gi"
           cpu: "512m"
           
- # Define readiness probe using TCP to check if traffic on port 8080 is ready
-      readinessProbe:
-       tcpSocket:
-         port: 8080                 # The port where your application is listening for traffic
-       initialDelaySeconds: 600      # Wait 5 minutes before performing the first readiness check
-       timeoutSeconds: 5             # Timeout for each check
-       periodSeconds: 10             # Perform the check every 10 seconds
-       failureThreshold: 3           # Allow 3 consecutive failures before marking it as not ready
-
-    # Define liveness probe as needed (could also use TCP if appropriate)
       livenessProbe:
-       tcpSocket:
-         port: 8080
-       initialDelaySeconds: 600
-       timeoutSeconds: 5
-       periodSeconds: 10
-       failureThreshold: 6       
-          
+        port: 8080
+        initialDelaySeconds: 600     # 10 minutes delay before the first liveness check
+        timeoutSeconds: 20           # Probe will time out after 20 seconds
+        periodSeconds: 10            # Kubernetes will check the probe every 10 seconds
+        successThreshold: 1          # 1 successful probe required to mark the container as healthy
+        failureThreshold: 6          # After 6 failed probes, the container will be restarted
+
+# Readiness probe settings
+      readinessProbe:
+        port: 8080
+        initialDelaySeconds: 600     # 10 minutes delay before the first readiness check
+        timeoutSeconds: 10           # Probe will time out after 10 seconds
+        periodSeconds: 10            # Kubernetes will check the probe every 10 seconds
+        successThreshold: 1          # 1 successful probe required to mark the container as ready
+        failureThreshold: 3          # After 3 failed probes, the container will be marked as unready
+
+# Use startup probe to delay liveness and readiness probes during startup
+      useStartupProbe: true
+
+# Startup probe settings
+      startupProbe:
+       port: 8080
+       initialDelaySeconds: 10      # 10 seconds before the first startup probe
+       timeoutSeconds: 10           # Probe will time out after 10 seconds
+       periodSeconds: 10            # Kubernetes will check the probe every 10 seconds
+       successThreshold: 1          # 1 successful probe required to mark the container as started
+       failureThreshold: 90   
 
       # To configure an alternative user for custom image, set value for runAsUser.
       # To configure an alternative group for volume mounts, set value for fsGroup
