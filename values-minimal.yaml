@@ -268,11 +268,11 @@ global:
 # Startup probe settings
       startupProbe:
        port: 8080
-       initialDelaySeconds: 10      # 10 seconds before the first startup probe
+       initialDelaySeconds: 300      # 10 seconds before the first startup probe
        timeoutSeconds: 10           # Probe will time out after 10 seconds
-       periodSeconds: 10            # Kubernetes will check the probe every 10 seconds
+       periodSeconds: 30            # Kubernetes will check the probe every 10 seconds
        successThreshold: 1          # 1 successful probe required to mark the container as started
-       failureThreshold: 90   
+       failureThreshold: 180   
 
       # To configure an alternative user for custom image, set value for runAsUser.
       # To configure an alternative group for volume mounts, set value for fsGroup
