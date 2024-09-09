@@ -55,7 +55,7 @@ global:
     #   For databases that use multiple JDBC driver files (such as DB2), specify comma separated values for 'driverUri'
     driverUri: ""
     username: "postgres"
-    password: "postgres"
+    password: "america@786"
     # To avoid exposing username & password, leave the jdbc.password & jdbc.username parameters empty (no quotes),
     # configure JDBC username & password parameters in the External Secrets Manager, and enter the external secret for the credentials
     # make sure the keys in the secret should be DB_USERNAME and DB_PASSWORD respectively
