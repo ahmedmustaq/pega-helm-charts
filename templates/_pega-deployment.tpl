@@ -16,6 +16,8 @@ kind: {{ .kind }}
 apiVersion: {{ .apiVersion }}
 metadata:
   annotations: 
+    "helm.sh/hook": "post-install"
+    "helm.sh/hook-weight": "2"   
 {{- if .root.Values.global.pegaTier }}{{- if .root.Values.global.pegaTier.annotations }}
 {{ toYaml .root.Values.global.pegaTier.annotations | indent 4 }}
 {{- end }}{{- end }}
