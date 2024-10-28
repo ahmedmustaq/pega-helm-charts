@@ -394,15 +394,15 @@ global:
         port: 8081
         initialDelaySeconds: 5
         timeoutSeconds: 5
-        periodSeconds: 30
+        periodSeconds: 10
         successThreshold: 1
-        failureThreshold: 3
+        failureThreshold: 2
       readinessProbe:
         initialDelaySeconds: 5
         timeoutSeconds: 5
-        periodSeconds: 30
+        periodSeconds: 10
         successThreshold: 1
-        failureThreshold: 3  
+        failureThreshold: 2  
 
       # To configure an alternative user for your custom image, set value for runAsUser
       # To configure an alternative group for volume mounts, set value for fsGroup
