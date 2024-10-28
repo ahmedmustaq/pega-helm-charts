@@ -11,7 +11,7 @@ data:
   # Database Type for installation
   DB_TYPE: {{ .Values.global.jdbc.dbType }}
   # JDBC URL of the DB where Pega is installed
-  JDBC_URL: {{ .Values.global.jdbc.url }}
+  JDBC_URL: {{ .Values.global.jdbc.url | default (printf "jdbc:postgresql://%s:5432/postgres" (include "postgres.fullname" .)) }}
 {{- if .Values.global.jdbc.readerurl }}
   # JDBC URL to configure Read Only Datasource
   JDBC_RO_URL: {{ .Values.global.jdbc.readerurl }}
